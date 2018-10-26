@@ -4,15 +4,23 @@ namespace AppBundle\Controller;
 
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+//use Symfony\Component\HttpFoundation\Response;
 
-class GenusController
+class GenusController extends Controller
 {
     /**
      * @Route("/genus/{genusName}")
      */
     public function showAction($genusName)
     {
-        return new Response($genusName.' under the see!');
+        return $this->render('genus/show.html.twig', array(
+            'name' => $genusName,
+        ));
+//        $templating = $this->container->get('templating'); // returns an error
+//        $html = $templating->render('genus/show.html.twig', array(
+//            'name' => $genusName
+//        ));
+//        return new Response($html);
     }
 }
